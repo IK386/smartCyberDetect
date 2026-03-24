@@ -2,102 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>SmartCyberDetect</title>
-
-<!-- Chart.js -->
+<title>SmartCyberDetect Level 10</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    text-align: center;
-    color: white;
-    background-color: #0b132b;
-}
-
-header {
-    background-color: #1c2541;
-    padding: 20px;
-}
-
-h1 { color: #00d4ff; }
-
-nav a {
-    color: #00d4ff;
-    margin: 10px;
-    text-decoration: none;
-}
-
-.page { display: none; margin-top: 40px; }
-.active { display: block; }
-
-button {
-    padding: 10px 20px;
-    background-color: #00d4ff;
-    border: none;
-    cursor: pointer;
-}
-
-canvas {
-    max-width: 400px;
-    margin-top: 20px;
-}
+body { margin:0; font-family:Arial; text-align:center; color:white; background:#0b132b; }
+header { background:#1c2541; padding:20px; position:sticky; top:0; }
+h1 { color:#00d4ff; }
+nav a { color:#00d4ff; margin:0 10px; text-decoration:none; font-weight:bold; cursor:pointer; }
+nav a:hover { color:#00aacc; }
+.page { display:none; margin-top:40px; }
+.active { display:block; }
+button { padding:10px 20px; background:#00d4ff; border:none; border-radius:5px; cursor:pointer; margin-top:10px; }
+button:hover { background:#00aacc; transform:scale(1.05); }
+canvas { max-width:400px; margin-top:20px; }
+form { max-width:300px; margin:auto; display:flex; flex-direction:column; gap:10px; }
+input, textarea { padding:10px; border-radius:5px; border:none; }
 </style>
-
 <script>
-function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
 }
-
-function showMessage() {
-    alert("Welcome 🚀");
-}
-
-window.addEventListener("load", function () {
+function showMessage(){ alert('Welcome 🚀'); }
+function sendForm(e){ e.preventDefault(); alert('Message sent successfully ✅'); e.target.reset(); }
+window.addEventListener('load', function(){
     showPage('home');
-
-    const canvas = document.getElementById('chart');
-
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Malware','Phishing','Ransomware'],
-                datasets: [{
-                    data: [10, 20, 15]
-                }]
-            }
-        });
-    }
+    const ctx = document.getElementById('chart').getContext('2d');
+    new Chart(ctx, { type:'bar', data:{ labels:['Malware','Phishing','Ransomware'], datasets:[{ data:[10,20,15], backgroundColor:'rgba(0,212,255,0.7)' }] }, options:{ responsive:true } });
 });
 </script>
-
 </head>
-
 <body>
-
 <header>
-    <h1>SmartCyberDetect</h1>
-    <nav>
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('about')">About</a>
-    </nav>
+<h1>SmartCyberDetect 🔥</h1>
+<nav>
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('about')">About</a>
+<a onclick="showPage('contact')">Contact</a>
+</nav>
 </header>
 
 <div id="home" class="page">
-    <h2>Welcome</h2>
-    <button onclick="showMessage()">Click</button>
-    <canvas id="chart"></canvas>
+<h2>Welcome</h2>
+<p>Cybersecurity project website</p>
+<button onclick="showMessage()">Click Me</button>
+<canvas id="chart"></canvas>
 </div>
 
 <div id="about" class="page">
-    <h2>About</h2>
-    <p>Cybersecurity project</p>
+<h2>About SmartCyberDetect</h2>
+<p>SmartCyberDetect analyzes and detects cyber threats using intelligent techniques.</p>
+<p>This platform helps identify malware, phishing, and ransomware to improve digital security.</p>
 </div>
 
+<div id="contact" class="page">
+<h2>Contact Me</h2>
+<form onsubmit="sendForm(event)">
+<input type="text" placeholder="Name" required>
+<input type="email" placeholder="Email" required>
+<textarea placeholder="Message" required></textarea>
+<button type="submit">Send</button>
+</form>
+</div>
 </body>
 </html>
