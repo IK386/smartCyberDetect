@@ -1,93 +1,186 @@
-.submit-btn {
-            background-color: var(--btn-color);
-            color: black;
-            cursor: pointer;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: transform 0.2s, background 0.3s;
-        }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartCyberDetect Level 10</title>
 
-        .submit-btn:hover {
-            transform: scale(1.1);
-            background-color: #00aacc;
-        }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    </style>
+<style>
+:root {
+    --text-color: white;
+    --btn-color: #00d4ff;
+}
 
-    <script>
-        function showMessage() {
-            alert("Welcome to SmartCyberDetect 🚀");
-        }
+body {
+    margin: 0;
+    font-family: Arial;
+    color: var(--text-color);
+    text-align: center;
+    background: linear-gradient(-45deg, #0b132b, #1c2541, #0b132b, #1c2541);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
 
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
-        }
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
 
-        function toggleMode() {
-            document.body.classList.toggle('light-mode');
-        }
+header {
+    background-color: rgba(28,37,65,0.9);
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
 
-        function submitForm(e) {
-            e.preventDefault();
-            alert("Your message has been sent! ✅");
-            e.target.reset();
-        }
+h1 { color: var(--btn-color); }
 
-        window.onload = function() {
-            showPage('home');
+nav a {
+    color: var(--btn-color);
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover { color: #00aacc; }
+
+.page { display: none; margin-top: 40px; }
+.active { display: block; }
+
+img {
+    width: 300px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+img:hover { transform: scale(1.1); }
+
+.btn {
+    padding: 10px 20px;
+    background-color: var(--btn-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #00aacc;
+    transform: scale(1.1);
+}
+
+.toggle-btn {
+    margin-left: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+body.light {
+    --text-color: black;
+    --btn-color: orange;
+    background: #f4f4f4;
+}
+
+form {
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 10px;
+    background: #1c2541;
+}
+</style>
+
+<script>
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+function toggleMode() {
+    document.body.classList.toggle('light');
+}
+
+function showMessage() {
+    alert("Welcome to SmartCyberDetect 🚀");
+}
+
+function sendForm(e) {
+    e.preventDefault();
+    alert("Message sent successfully ✅");
+}
+
+window.onload = function() {
+    showPage('home');
+
+    const ctx = document.getElementById('chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Malware','Phishing','Ransomware','Spyware'],
+            datasets: [{
+                data: [10, 15, 7, 5]
+            }]
         }
-    </script>
+    });
+}
+</script>
 
 </head>
 
 <body>
 
-    <header>
-        <h1>SmartCyberDetect 🔥</h1>
-        <div>
-            <nav>
-                <a href="#" onclick="showPage('home')">Accueil</a>
-                <a href="#" onclick="showPage('about')">About</a>
-                <a href="#" onclick="showPage('contact')">Contact</a>
-            </nav>
-            <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
-        </div>
-    </header>
+<header>
+    <h1>SmartCyberDetect 🔥</h1>
+    <nav>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('about')">About</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <button class="toggle-btn" onclick="toggleMode()">Mode</button>
+</header>
 
-    <!-- Home Page -->
-    <div id="home" class="content page">
-        <h2>Welcome to my project</h2>
-        <p>This is my cybersecurity project website.</p>
-        <p>I detect cyber threats using smart techniques.</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="cyber security">
-        <br>
-        <button class="btn" onclick="showMessage()">Click Me</button>
-    </div>
+<div id="home" class="page">
+    <h2>Welcome</h2>
+    <p>Cybersecurity project website</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+    <br><br>
+    <button class="btn" onclick="showMessage()">Click Me</button>
 
-    <!-- About Page -->
-    <div id="about" class="content page hidden">
-        <h2>About SmartCyberDetect</h2>
-        <p>SmartCyberDetect is a project to analyze and detect cyber threats using AI and smart algorithms.</p>
-        <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="about image">
-    </div>
+    <h3>Threat Analysis</h3>
+    <canvas id="chart"></canvas>
+</div>
 
-    <!-- Contact Page -->
-    <div id="contact" class="content page hidden">
-        <h2>Contact Me</h2>
-        <form onsubmit="submitForm(event)">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea rows="4" placeholder="Your Message" required></textarea>
-            <button class="submit-btn" type="submit">Send Message</button>
-        </form>
-    </div>
+<div id="about" class="page">
+    <h2>About</h2>
+    <p>This project detects cyber threats using smart techniques.</p>
+</div>
 
-    <footer>
-        <p>© 2026 SmartCyberDetect</p>
-    </footer>
+<div id="contact" class="page">
+    <h2>Contact</h2>
+    <form onsubmit="sendForm(event)">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button class="btn">Send</button>
+    </form>
+</div>
+
+<footer>
+    <p>© 2026 SmartCyberDetect</p>
+</footer>
 
 </body>
 </html>
