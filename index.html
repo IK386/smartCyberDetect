@@ -32,7 +32,7 @@ function showMessage(){
 
 function sendForm(e){
     e.preventDefault();
-    alert('Message sent successfully ✅');
+    alert('Your request has been received.Our cybersecurity team will contact you ✅.');
     e.target.reset();
 }
 
@@ -42,9 +42,9 @@ window.addEventListener('load', function(){
     new Chart(ctx, {
         type:'bar',
         data:{
-            labels:['Malware','Phishing','Ransomware'],
+            labels:['Normal Traffic','Suspicious','Activity','Detected Attacks'],
             datasets:[{
-                data:[10,20,15],
+                data:[65,20,15],
                 backgroundColor:'rgba(0,212,255,0.7)'
             }]
         }
@@ -57,7 +57,7 @@ window.addEventListener('load', function(){
 <body>
 
 <header>
-<h1>SmartCyberDetect 🔥</h1>
+<h1>SmartCyberDetect AI Cybersecurity Platform🔥</h1>
 <nav>
 <a onclick="showPage('home')">Home</a>
 <a onclick="showPage('about')">About</a>
@@ -67,18 +67,22 @@ window.addEventListener('load', function(){
 
 <div id="home" class="page">
 <h2>Welcome</h2>
-<p>Cybersecurity project website</p>
-<button onclick="showMessage()">Click Me</button>
+<h3>AI Cyber Attack Prediction System</h3>
+<p>
+SmartCyberDetect is an AI-powered cybersecurity platform that predicts cyber attacks
+before they happen and helps companies protect their networks in real time.
+</p>
+<button onclick="showMessage()">Launch Live Demo</button>
 <canvas id="chart"></canvas>
 </div>
 
 <div id="about" class="page">
 <h2>About SmartCyberDetect</h2>
-<p>SmartCyberDetect analyzes and detects cyber threats.</p>
-</div>
-
+<p>SmartCyberDetect is an intelligent cybersecurity solution based on Machine Learning.
+The platform analyzes network traffic logs, calculates IP risk scores,
+detects suspicious behavior, and predicts cyber attacks before they occur.</p></div>
 <div id="contact" class="page">
-<h2>Contact Me</h2>
+<h2>Contact SmartCyberDetect Team</h2>
 <form onsubmit="sendForm(event)">
 <input type="text" placeholder="Name" required>
 <input type="email" placeholder="Email" required>
