@@ -91,6 +91,50 @@ detects suspicious behavior, and predicts cyber attacks before they occur.</p></
 <button type="submit">Send</button>
 </form>
 </div>
+<section id="live-demo">
+<h2>🔥 Live Cyber Attack Simulation</h2>
+
+<div id="terminal"
+style="background:black;color:lime;
+padding:20px;
+font-family:monospace;
+height:250px;
+overflow:auto;">
+</div>
+
+</section>
+
+<script>
+
+const logs = [
+"Initializing SmartCyberDetect AI...",
+"Monitoring Network Traffic...",
+"Normal packets detected...",
+"Analyzing behavior...",
+"Incoming connection 192.168.1.24",
+"Traffic spike detected...",
+"⚠ Suspicious activity detected",
+"Running AI model...",
+"🚨 ATTACK DETECTED: DDoS",
+"Risk Level: HIGH",
+"Blocking malicious IP...",
+"System secured successfully ✅"
+];
+
+let i = 0;
+
+function addLog(){
+if(i < logs.length){
+document.getElementById("terminal").innerHTML += logs[i] + "<br>";
+i++;
+setTimeout(addLog, 1200);
+}
+}
+
+addLog();
+
+</script>
+
 
 </body>
 </html>
