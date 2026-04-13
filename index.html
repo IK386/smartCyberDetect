@@ -110,6 +110,16 @@ Python • Machine Learning • Streamlit • AI Models • CICIDS2017 Dataset
 </p>
 </section>
 <section id="live-demo">
+<section id="demo">
+    <h2>Live Cyber Attack Demo</h2>
+    <p>Click the button to simulate a real cyber attack detected by our AI.
+    </p>
+    <button
+onclick="launchAttack()>Launch Attack
+    </button>
+    <p id="attackStatus"></p>
+</section>
+
 <h2>🔥 AI Attack Detection example</h2>
 
 <div id="terminal"
@@ -152,7 +162,19 @@ setTimeout(addLog, 1200);
 addLog();
 
 </script>
+<script>
+function launchAttack() {
 
+    document.getElementById("attackStatus").innerHTML =
+    "⚠️ Suspicious Traffic Detected...";
+
+    setTimeout(() => {
+        document.getElementById("attackStatus").innerHTML =
+        "🚨 DDoS Attack Detected - Risk Level HIGH";
+    }, 3000);
+
+}
+</script>
 
 </body>
 </html>
